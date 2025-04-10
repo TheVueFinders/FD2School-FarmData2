@@ -19,13 +19,15 @@ describe("Test default seeding input values", () => {
 
 
         it("Check that neither Tray nor Element is selected", () => {
+		cy.get("[data-cy=tray-seedings]").should('not.be.checked')
+                cy.get("[data-cy=direct-seedings]").should('not.be.checked')
 
         })
 
 
 
         it("Check that message is visible indicating that Tray or Direct must be selected", () => {
-
+		cy.get("[data-cy=seeding-select-message]").should('be.visible')
         })
 
 
