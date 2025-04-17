@@ -31,7 +31,8 @@ describe("Test default seeding input values", () => {
 
 
         it("Check that form elements for either the Tray and Direct seedings are not visible or do not exist", () => {
-
+                cy.get("[data-cy=tray-seedings-box]").should('not.be.visible')
+                cy.get("[data-cy=direct-seedings-box]").should('not.be.visible')
         })
 
 
