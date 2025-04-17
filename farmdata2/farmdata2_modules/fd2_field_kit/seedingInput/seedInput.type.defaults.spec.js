@@ -7,13 +7,13 @@ describe("Test default seeding input values", () => {
 // Remember, try to only edit lines inside the it() you are working on!
 
 	it("Check that element for Tray is enabled", () => {
-
+                cy.get("[data-cy=tray-seedings-box]").should("not.be.disabled")  
 	})
 
 
 
         it("Check that element for Direct is enabled", () => {
-
+                cy.get("[data-cy=direct-seedings-box]").should("not.be.disabled")
         })
 
 
