@@ -42,10 +42,33 @@ describe("Test report dates", () => {
 
 
 
-        it("Check that neither Tray nor Element is selected", () => {
-		
-                
+        it("Check that rows in the table appear in sorted order", () => {
+                const startDate = '2019-01-01';
+                const endDate = '2019-01-05';
 
+		cy.get('[data-cy=start-date-select]').type(startDate);
+                cy.get('[data-cy=end-date-select]').type(endDate);
+                cy.get('[data-cy=generate-rpt-btn]').click();
+                
+                cy.get('[data-cy="loader"]').should('not.exist');
+                cy.get('[data-cy="report-table"]').should('exist');
+                
+                var nrows = 0;
+                cy.get('[data-cy="report-table"]')
+                        .find("tr")
+                        .then((row) => {
+                                nrows = row.length;
+                        })
+                var oldDate = new Date(startDate);
+                for( n in nrows) 
+                {
+                        cy.get('[data-cy="report-table"] tbody tr').eq(n).find('td').eq(1).invoke('text').then(dateText => {
+                                const rowDate = new Date(dateText.trim());
+                        });
+                        cy.wrap(rowDate).should("be.gte", oldDate)
+                        oldDate = rowDate;
+                }
+                
         })
 
 
