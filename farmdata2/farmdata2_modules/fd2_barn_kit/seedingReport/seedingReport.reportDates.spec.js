@@ -1,7 +1,7 @@
 describe("Test report dates", () => {
 	beforeEach(() => {
 		cy.login("manager1", "farmdata2")
-		cy.visit("/farm/fd2-field-kit/seedingInput")
+		cy.visit("/farm/fd2-barn-kit/seedingReport")
 	})
 
 // Remember, try to only edit lines inside the it() you are working on! AND change it("") contents
@@ -26,13 +26,13 @@ describe("Test report dates", () => {
 
 
 
-        it("Check that message is visible indicating that Tray or Direct must be selected", () => {
+        it("Check no logs message", () => {
 		
         })
 
 
 
-        it("Check that form elements for either the Tray and Direct seedings are not visible or do not exist", () => {
+        it("", () => {
                 
                 
         })
