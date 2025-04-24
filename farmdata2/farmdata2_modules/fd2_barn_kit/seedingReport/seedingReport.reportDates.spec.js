@@ -73,15 +73,33 @@ describe("Test report dates", () => {
 
 
 
-        it("Check no logs message", () => {
-		
+        it("Check message appears when no logs are returned", () => {
+			cy.get('[data-cy=start-date-select]')
+		       	.type('2025-01-01')
+            cy.get('[data-cy=end-date-select]')
+                .type('2025-01-02')
+            cy.get('[data-cy=generate-rpt-btn]')
+                .click()
+
+			cy.get('[data-cy=no-logs-message]')
+				.should('be.visible')
+            
         })
 
 
 
-        it("", () => {
-                
-                
+        it("Check table is hidden when no logs are returned", () => {
+			cy.get('[data-cy=start-date-select]')
+		       	.type('2025-01-01')
+            cy.get('[data-cy=end-date-select]')
+                .type('2025-01-02')
+            cy.get('[data-cy=generate-rpt-btn]')
+                .click()
+
+			cy.wait(5000) // Ensures enough time for the table to appear, in case the API is taking a while
+
+            cy.get('[data-cy=report-table]') 
+            	.should('not.exist')   
         })
 
 
