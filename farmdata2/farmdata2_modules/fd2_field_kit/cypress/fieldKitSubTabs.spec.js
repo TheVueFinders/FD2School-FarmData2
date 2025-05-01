@@ -7,6 +7,8 @@ describe("Field kit sub-tabs", () => {
 // Remember, try to only edit lines inside the it() you are working on :)
 
         it("Check that the FieldKit tab contains sub-tabs for Info and Seeding Input.", () => {
+			cy.get('.pagination-sm').contains('Info').should('exist')
+			cy.get('.pagination-sm').contains('Seeding Input').should('exist')
 
                 
         })
