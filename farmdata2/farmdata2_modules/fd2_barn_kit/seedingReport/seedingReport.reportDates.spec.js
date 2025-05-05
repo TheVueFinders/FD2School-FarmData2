@@ -51,18 +51,18 @@ describe("Test report dates", () => {
                 cy.get('[data-cy=generate-rpt-btn]').click();
                 
                 var oldDate = new Date(startDate);
-                cy.get('[data-cy="report-table"] tbody')
-                        .children()
-                        .then((row) => {
-                              for(var n=0; n<row.length; n++) 
-                                {
-                                        cy.get('[data-cy="report-table"] tbody tr').eq(n).find('td').eq(1).invoke('text').then(dateText => {
-                                                const rowDate = new Date(dateText.trim());
-                                                expect(rowDate).to.be.within(new Date(startDate), new Date(endDate));
-                                                oldDate = rowDate;
-                                        });
-                                }
-                        })
+                cy.get('[data-cy="report-table"] tbody').children().then((row) => 
+                {
+                        for(var n=0; n<row.length; n++) 
+                        {
+                                cy.get('[data-cy="report-table"] tbody tr').eq(n).find('td')
+                                .eq(1).invoke('text').then(dateText => {
+                                        const rowDate = new Date(dateText.trim());
+                                        expect(rowDate).to.be.gte(oldDate);
+                                        oldDate = rowDate;
+                                });
+                        }
+                })
                 
         })
 
